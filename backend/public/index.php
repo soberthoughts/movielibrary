@@ -5,7 +5,8 @@ header('Access-Control-Allow-Origin: *');
 
 use App\TMDBService;
 
-$tmdb = new TMDBService('8f598b749afdf973c0b6930e99927df3');
+$apiKey = getenv('TMDB_API_KEY') ?: 'fallback_key_for_local_dev';
+$tmdb = new TMDBService($apiKey);
 
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
