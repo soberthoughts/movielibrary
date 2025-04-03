@@ -9,12 +9,12 @@ export const useMovieStore = defineStore("movie", {
   }),
   actions: {
     async fetchPopularMovies() {
-      const response = await axios.get('http://localhost:8080/popular');
-      this.popularMovies = response.data.results;
+      const response = await axios.get('http://localhost:8000/popular');
+      this.popularMovies = response.data; // Remove .results
     },
-    async fetchRecommendations() {
-      const response = await axios.get('http://localhost:8080/recommendations/$(movieId)');
-      this.reccomendations = response.data.results;
+    async fetchRecommendations(movieId) {
+      const response = await axios.get(`http://localhost:8000/recommendations/${movieId}`);
+      this.recommendations = response.data; // Remove .results
     },
     likeMovie(movie) {
       this.likedMovies.push(movie);
