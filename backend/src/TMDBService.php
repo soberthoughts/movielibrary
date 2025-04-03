@@ -15,8 +15,11 @@ class TMDBService
         $this->httpClient = new Client([
             'base_uri' => 'https://api.themoviedb.org/3/',
             'timeout'  => 2.0,
+            'verify' => false, // Disable SSL verification for local development
         ]);
     }
+
+
 
     /**
      * Get popular movies from TMDB
